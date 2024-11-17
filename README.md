@@ -1,31 +1,46 @@
-Questão 1
-Implemente uma aplicação Java para o gerenciamento de uma plataforma de cursos online. A aplicação deve utilizar Hibernate para fazer o mapeamento objeto-relacional (ORM) com três tabelas:
-  1.	Tabela Aluno: Representa os alunos cadastrados no sistema. A tabela deve conter os seguintes campos:
-    o	id (Chave primária, auto-gerado)
-    o	nome (String)
-    o	email (String)
-    o	dataCadastro (Data)
-  2.	Tabela Curso: Representa os cursos disponíveis na plataforma. A tabela deve conter os seguintes campos:
-    o	id (Chave primária, auto-gerado)
-    o	nome (String)
-    o	descricao (String)
-    o	dataCriacao (Data)
-  3.	Tabela Inscrição: Representa a inscrição dos alunos nos cursos. A tabela deve conter os seguintes campos:
-    o	id (Chave primária, auto-gerado)
-    o	aluno_id (Chave estrangeira para a tabela Aluno)
-    o	curso_id (Chave estrangeira para a tabela Curso)
-    o	dataInscricao (Data)
-  A relação entre as tabelas deve ser:
-    o	Aluno e Curso: Relação muitos-para-muitos, mapeada por meio da tabela Inscricao.
-  Requisitos da Implementação:
-    1.	Controller e Endpoints:
-    o	Implemente controladores Spring MVC para expor os endpoints REST que possibilitem:
-      .	Cadastrar alunos e cursos.
-      .	Inscrever um aluno em um curso.
-      .	Listar todos os cursos em que um aluno está inscrito.
-      .	Listar todos os alunos inscritos em um determinado curso.
-    2.	Populator e DTO:
-      o	Crie um InscricaoPopulator para converter as entidades Aluno e Curso para DTOs (AlunoDTO, CursoDTO).
-      o	Utilize os DTOs no Controller, evitando expor as entidades diretamente.
-    3.	Banco de Dados:
-      o	Utilize o banco H2 configurado com Hibernate.
+# Plataforma de Cursos Online
+
+Esta aplicação Java gerencia uma plataforma de cursos online utilizando Hibernate para o mapeamento objeto-relacional (ORM) com três tabelas principais:
+
+## Tabelas
+
+### 1. Tabela Aluno
+Representa os alunos cadastrados no sistema. Contém os seguintes campos:
+- `id`: Chave primária, auto-gerado
+- `nome`: Nome do aluno (String)
+- `email`: E-mail do aluno (String)
+- `dataCadastro`: Data de cadastro do aluno (Date)
+
+### 2. Tabela Curso
+Representa os cursos disponíveis na plataforma. Contém os seguintes campos:
+- `id`: Chave primária, auto-gerado
+- `nome`: Nome do curso (String)
+- `descricao`: Descrição do curso (String)
+- `dataCriacao`: Data de criação do curso (Date)
+
+### 3. Tabela Inscrição
+Representa as inscrições dos alunos nos cursos. Contém os seguintes campos:
+- `id`: Chave primária, auto-gerado
+- `aluno_id`: Chave estrangeira para a tabela `Aluno`
+- `curso_id`: Chave estrangeira para a tabela `Curso`
+- `dataInscricao`: Data da inscrição do aluno (Date)
+
+## Relacionamento entre as tabelas
+- **Aluno e Curso**: Relação muitos-para-muitos, mapeada por meio da tabela `Inscricao`.
+
+## Requisitos de Implementação
+
+### 1. Controller e Endpoints
+Foi implementado controladores Spring MVC com os seguintes endpoints REST:
+- **Cadastrar alunos**: Endpoint para cadastrar alunos no sistema.
+- **Cadastrar cursos**: Endpoint para cadastrar cursos na plataforma.
+- **Inscrever um aluno em um curso**: Endpoint para inscrever um aluno em um curso.
+- **Listar todos os cursos em que um aluno está inscrito**: Endpoint para listar todos os cursos aos quais um aluno está inscrito.
+- **Listar todos os alunos inscritos em um determinado curso**: Endpoint para listar todos os alunos que estão inscritos em um curso específico.
+
+### 2. Populator e DTO
+- **InscricaoPopulator**: Responsável por converter as entidades `Aluno` e `Curso` para DTOs (`AlunoDTO`, `CursoDTO`).
+- **DTOs**: Utilização de DTOs no Controller, evitando expor as entidades diretamente nas respostas da API.
+
+### 3. Banco de Dados
+- Utilização do banco de dados **H2** configurado com Hibernate, permitindo um banco de dados em memória para testes e desenvolvimento.
